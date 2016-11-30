@@ -1,7 +1,11 @@
-module Controllable()
+module Object.Controllable(
+Controllable(..)
+)
 where
-  import Graphics.Gloss
+  import Graphics.Gloss.Interface.Pure.Game
 
-  class (Object a) => Controllable a where
+  class Controllable a where
     handleEvent :: Key -> a -> a
     handleEvent k a = a
+    noAction :: a -> a
+    noAction a = a

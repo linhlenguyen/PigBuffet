@@ -1,4 +1,6 @@
-module Renderer.Movable()
+module Object.Movable(
+Movable(..)
+)
 where
   import Data.Data
   import Object.Object

@@ -1,15 +1,16 @@
 module Main(main)
   where
     import Graphics.Gloss.Interface.Pure.Game
-    import Setup
+    import GameSetup
     import Renderer.Renderer
     import Data.Data
+    import Data.World
     import Renderer.Resources
     import qualified Data.Map.Lazy as Map
     import Control.Control
 
-    update :: Float -> WorldState -> WorldState
-    update _ = keyHold
+    update :: Float -> World -> World
+    update _ = keyEvent
 
     main :: IO ()
     main = do

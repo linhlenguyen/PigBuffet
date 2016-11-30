@@ -1,14 +1,15 @@
 module Renderer.Renderer(
-renderCharacter,
-renderGame,
-nextSprite
+renderGame
 )
   where
     import Graphics.Gloss
     import Data.Data
+    import Data.World
     import Data.Map.Strict
+    import Object.Renderable
+    import Object.Pig
 
-    renderGame :: SpriteResource -> WorldState -> Picture
+    renderGame :: SpriteResource -> World -> Picture
     renderGame sr ws = pictures [
       --sr!Background,
-      renderCharacter sr (ws_player ws)]
+       render sr (wpig ws)]

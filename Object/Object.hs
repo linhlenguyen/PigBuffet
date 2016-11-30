@@ -2,6 +2,8 @@ module Object.Object(
 Object(..)
 )
 where
+  import Data.Data
+
   class Object a where
     size :: a -> Size
-    position :: a -> Point
+    pos :: a -> Point

@@ -1,10 +1,18 @@
-module Data.World()
+module Data.World(
+World(..),
+initialState
+)
 where
-  import qualified Graphics.Gloss.Interface.Pure.Game as Gloss
+  import Graphics.Gloss.Interface.Pure.Game
   import Object.Pig
 
   data World = World {
-    wcontrollable :: [a],
-    wbackground :: [b]
-    wkeyPressed :: [Gloss.Key]
+    wpig :: Pig,
+    wkeyPressed :: [Key]
+  }
+
+  initialState :: World
+  initialState = World {
+    wpig = newPig,
+    wkeyPressed = []
   }
