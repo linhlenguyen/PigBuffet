@@ -1,10 +1,10 @@
-module Object.Movable(
-Movable(..)
+module Object.Moving(
+Moving(..)
 )
 where
   import Data.Data
   import Object.Object
 
-  class Movable a where
+  class Moving a where
     step :: a -> a
     step a = a
