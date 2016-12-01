@@ -5,9 +5,12 @@ loadResource
     import qualified Graphics.Gloss.Data.Bitmap as Gloss
     import qualified Graphics.Gloss.Data.Picture as Gloss
     import Data.Data
+    import qualified Object.Pig as Pig
+    import qualified Object.Food as Food
+    import qualified Object.Number as Number
 
     bmpTagMap :: [(SpriteTag, FilePath)]
-    bmpTagMap = []
+    bmpTagMap = Number.numberResourceMap ++ Pig.pigResourceMap ++ Food.foodResourceMap
 
     loadResource :: IO [(SpriteTag, Gloss.Picture)]
     loadResource = loadResource' bmpTagMap

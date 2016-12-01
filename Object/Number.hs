@@ -1,14 +1,14 @@
-module Data.Number(
+module Object.Number(
 numberToPicture,
-numberBitmapMap
+numberResourceMap
 )
   where
     import Graphics.Gloss
     import Data.Data
     import Data.Map.Strict
 
-    numberBitmapMap :: [(SpriteTag, FilePath)]
-    numberBitmapMap = [
+    numberResourceMap :: [(SpriteTag, FilePath)]
+    numberResourceMap = [
       ("1", "bmp/misc/1.bmp"),
       ("2", "bmp/misc/2.bmp"),
       ("3", "bmp/misc/3.bmp"),

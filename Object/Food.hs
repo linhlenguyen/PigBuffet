@@ -12,8 +12,9 @@ where
   import Data.Map.Strict
 
   foodResourceMap :: [(SpriteTag, FilePath)]
-  foodResourceMap = [("Cake", "bmp/food/cake.bmp"),
-    ("Carrot", "bmp/food/carrot.bmp")]
+  foodResourceMap = []
+    -- [("Cake", "bmp/food/cake.bmp"),
+    -- ("Carrot", "bmp/food/carrot.bmp")]
 
   data Food = Food {
     f_pos :: Point,
