@@ -1,5 +1,5 @@
 module Object.Step(
-Moving(..)
+Step(..)
 )
 where
   import Data.Data
