@@ -1,5 +1,6 @@
 module Logic.Geometry(
-recContain
+recContain,
+recCollide
 )
 where
   import Data.Data
@@ -10,3 +11,9 @@ where
           rx1 = x + w/2
           ry0 = y - h/2
           ry1 = y + h/2
+
+  recPoints :: Rectangle -> [Point]
+  recPoints ((x,y),(w,h)) = [(x - w/2, y - w/2), (x - w/2, y + w/2), (x + w/2, y - w/2), (x + w/2, y + w/2)]
+
+  recCollide :: Rectangle -> Rectangle -> Bool
+  recCollide r1 r2 = any (\x -> x == True) $ map (recContain r1) $ recPoints r2

@@ -5,14 +5,19 @@ initialState
 where
   import Graphics.Gloss.Interface.Pure.Game
   import Object.Pig
+  import Object.Food
 
   data World = World {
     wpig :: Pig,
-    wkeyPressed :: [Key]
+    wfood :: [Food],
+    wkeyPressed :: [Key],
+    counter :: Int
   }
 
   initialState :: World
   initialState = World {
     wpig = newPig,
-    wkeyPressed = []
+    wfood = [],
+    wkeyPressed = [],
+    counter = 0
   }
