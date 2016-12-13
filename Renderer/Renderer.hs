@@ -11,5 +11,5 @@ renderGame
 
     renderGame :: SpriteResource -> World -> Picture
     renderGame sr ws = pictures [
-      --sr!Background,
+       sr!"bg",
        render sr (wpig ws)]

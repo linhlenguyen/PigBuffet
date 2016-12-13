@@ -11,7 +11,8 @@ where
     wpig :: Pig,
     wfood :: [Food],
     wkeyPressed :: [Key],
-    counter :: Int
+    counter :: Int,
+    wt :: Int
   }
 
   initialState :: World
@@ -19,5 +20,6 @@ where
     wpig = newPig,
     wfood = [],
     wkeyPressed = [],
-    counter = 0
+    counter = 0,
+    wt = 0
   }

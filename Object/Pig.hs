@@ -26,16 +26,11 @@ where
 
   --triggerAnimation :: AnimationType ->
 
-  data PAnimation = StepLeft | StepRight | None (deriving Show)
+  data PAnimation = StepLeft | StepRight | None deriving (Show)
 
   pigResourceMap :: [(SpriteTag, FilePath)]
   pigResourceMap = [
-    ("StandLeft","bmp/pig/standl.bmp"),
-    ("StandRight","bmp/pig/standr.bmp"),
-    ("RunLeft1","bmp/pig/rl1.bmp"),
-    ("RunLeft2","bmp/pig/rl2.bmp"),
-    ("RunRight1","bmp/pig/rr1.bmp"),
-    ("RunRight2","bmp/pig/rr2.bmp")]
+    ("pig", "bmp/pig/p.bmp")]
 
   data Pig = Pig {
     p_pos :: Point,
@@ -58,28 +53,18 @@ where
   instance Controllable Pig where
     handleEvent key p =
       case key of
-        (Gloss.SpecialKey Gloss.KeyLeft) -> p { p_sprite = newSpriteL,
+        (Gloss.SpecialKey Gloss.KeyLeft) -> p { p_sprite = "pig",
                                                 p_pos = (x - (p_moveSpeed p),y)}
-        (Gloss.SpecialKey Gloss.KeyRight) -> p { p_sprite = newSpriteR,
+        (Gloss.SpecialKey Gloss.KeyRight) -> p { p_sprite = "pig",
                                                  p_pos = (x + (p_moveSpeed p),y)}
-        _ -> p { p_sprite = "StandLeft" }
+        _ -> p { p_sprite = "pig" }
       where (x,y) = p_pos p
-            currentSprite = p_sprite p
-            newSpriteL = if currentSprite == "RunLeft1" then "RunLeft2" else "RunLeft1"
-            newSpriteR = if currentSprite == "RunRight1" then "RunRight2" else "RunRight1"
-    noAction p = p { p_sprite = newSprite }
-      where currentSprite = p_sprite p
-            newSprite = case currentSprite of { "RunLeft1" -> "StandLeft";
-                                                "RunLeft2" -> "StandLeft";
-                                                "RunRight1" -> "StandRight";
-                                                "RunRight2" -> "StandRight";
-                                                _ -> "StandLeft"; }
 
   newPig :: Pig
   newPig = Pig {
     p_pos = (0,0),
-    p_size = (64,64),
-    p_sprite = "StandLeft",
-    p_moveSpeed = 10.0,
+    p_size = (164,164),
+    p_sprite = "pig",
+    p_moveSpeed = 164.0,
     p_animationQueue = []
   }

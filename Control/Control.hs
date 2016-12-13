@@ -27,9 +27,13 @@ where
     where keys = wkeyPressed ws
           ws' = ws { wkeyPressed = filter (\k -> not (k == key)) keys }
 
-  keyEvent :: World -> World
-  keyEvent ws = ws'
+  keyEvent :: Float -> World -> World
+  keyEvent t ws = ws'
     where keys = wkeyPressed ws
           p = wpig ws
-          ws' = if null keys then ws { wpig = noAction p }
-                else foldr handleKey ws keys
+          ct = wt ws
+          wt' = if mod ct 5 == 0 then 0 else ct + 1
+          ws' = if mod ct 5 == 0 then
+                  if null keys then ws { wpig = noAction p, wt = wt' }
+                  else foldr handleKey ws keys
+                else ws { wt = wt'}

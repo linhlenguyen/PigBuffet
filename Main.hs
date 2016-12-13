@@ -8,7 +8,7 @@ module Main(main)
     import Renderer.Resources
     import qualified Data.Map.Lazy as Map
     import Control.Control
-    import Object.Moving
+    import Object.Step
     import Logic.Geometry
     import Object.Pig
     import Object.Food
