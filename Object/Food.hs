@@ -8,7 +8,7 @@ where
   import Data.Data
   import Object.Object
   import Object.Renderable
-  import Object.Moving
+  import Object.Step
   import Data.Map.Strict
 
   foodResourceMap :: [(SpriteTag, FilePath)]
@@ -33,7 +33,7 @@ where
       where (x,y) = f_pos f
             bmp = sr!(f_sprite f)
 
-  instance Moving Food where
+  instance Step Food where
     step f = f { f_pos = (x',y') }
       where (x,y) = f_pos f
             (vx,vy) = f_mVector f
