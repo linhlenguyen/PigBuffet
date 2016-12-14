@@ -10,6 +10,7 @@ renderGame
     import Object.Pig
 
     renderGame :: SpriteResource -> World -> Picture
-    renderGame sr ws = pictures [
+    renderGame sr ws = pictures $ [
        sr!"bg",
-       render sr (wpig ws)]
+       render sr (wpig ws)
+       ] ++ Prelude.map (render sr) (wfood ws)

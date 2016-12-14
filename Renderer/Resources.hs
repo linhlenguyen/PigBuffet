@@ -10,7 +10,7 @@ loadResource
     import qualified Object.Number as Number
 
     bmpTagMap :: [(SpriteTag, FilePath)]
-    bmpTagMap = Number.numberResourceMap ++ Pig.pigResourceMap ++ Food.foodResourceMap ++ ("bg", "bmp/bg.bmp")
+    bmpTagMap = Number.numberResourceMap ++ Pig.pigResourceMap ++ Food.foodResourceMap ++ [("bg", "bmp/bg2.bmp")]
 
     loadResource :: IO [(SpriteTag, Gloss.Picture)]
     loadResource = loadResource' bmpTagMap

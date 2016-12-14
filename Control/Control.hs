@@ -8,8 +8,8 @@ where
   import Data.World
   import Object.Controllable
 
-  handleKey :: Key -> World -> World
-  handleKey key ws = ws { wpig = handleEvent key p
+  handleKey :: Float -> Key -> World -> World
+  handleKey t key ws = ws { wpig = handleEvent t key p
   } where p = wpig ws
 
   handleKeyPress :: Event -> World -> World
@@ -19,7 +19,7 @@ where
   handleKeyPress (EventKey key Down _ _) ws = ws'
     where
       keys = wkeyPressed ws
-      ws' = if any (\k -> k == key) keys then handleKey key ws else handleKey key $ ws { wkeyPressed = key:keys }
+      ws' = if any (\k -> k == key) keys then ws else ws { wkeyPressed = key:keys }
   handleKeyPress _ ws = ws
 
   resetKey :: Key -> World -> World
@@ -32,8 +32,5 @@ where
     where keys = wkeyPressed ws
           p = wpig ws
           ct = wt ws
-          wt' = if mod ct 5 == 0 then 0 else ct + 1
-          ws' = if mod ct 5 == 0 then
-                  if null keys then ws { wpig = noAction p, wt = wt' }
-                  else foldr handleKey ws keys
-                else ws { wt = wt'}
+          ws' = if null keys then ws { wpig = noAction p }
+                else foldr (handleKey t) ws keys

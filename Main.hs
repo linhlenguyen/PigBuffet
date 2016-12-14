@@ -27,7 +27,7 @@ module Main(main)
     generateFood t w = w
 
     update :: Float -> World -> World
-    update t = keyEvent.stepGame.(generateFood t)
+    update t = (keyEvent t).stepGame.(generateFood t)
 
     main :: IO ()
     main = do

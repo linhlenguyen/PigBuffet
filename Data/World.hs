@@ -18,7 +18,7 @@ where
   initialState :: World
   initialState = World {
     wpig = newPig,
-    wfood = [],
+    wfood = [newFood "" 100],
     wkeyPressed = [],
     counter = 0,
     wt = 0

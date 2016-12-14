@@ -10,6 +10,7 @@ where
   import Object.Renderable
   import Object.Step
   import Data.Map.Strict
+  import Data.Random
 
   foodResourceMap :: [(SpriteTag, FilePath)]
   foodResourceMap = []
@@ -31,7 +32,7 @@ where
   instance Renderable Food where
     render sr f = Gloss.translate x y $ bmp
       where (x,y) = f_pos f
-            bmp = sr!(f_sprite f)
+            bmp = Gloss.circle 40 --sr!(f_sprite f)
 
   instance Step Food where
     step f = f { f_pos = (x',y') }
@@ -41,8 +42,8 @@ where
 
   newFood :: SpriteTag -> Float -> Food
   newFood t x = Food {
-    f_pos = (x, -320),
+    f_pos = (x, 400),
     f_size = (32,32),
     f_sprite = t,
-    f_mVector = (0,2.0)
+    f_mVector = (0,-6.0)
   }

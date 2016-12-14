@@ -37,7 +37,8 @@ where
     p_size :: Size,
     p_sprite :: SpriteTag,
     p_moveSpeed :: Float,
-    p_animationQueue :: [PAnimation]
+    p_animationQueue :: [PAnimation],
+    p_dt :: Float
   }
 
   --Boilerplate
@@ -51,20 +52,24 @@ where
             bmp = sr!(p_sprite p)
 
   instance Controllable Pig where
-    handleEvent key p =
-      case key of
-        (Gloss.SpecialKey Gloss.KeyLeft) -> p { p_sprite = "pig",
-                                                p_pos = (x - (p_moveSpeed p),y)}
-        (Gloss.SpecialKey Gloss.KeyRight) -> p { p_sprite = "pig",
-                                                 p_pos = (x + (p_moveSpeed p),y)}
-        _ -> p { p_sprite = "pig" }
+    handleEvent t key p = p'
       where (x,y) = p_pos p
+            (x',y') = case key of
+                        (Gloss.SpecialKey Gloss.KeyLeft) -> if x - (p_moveSpeed p) >= -240 then (x - (p_moveSpeed p),y) else (x,y)
+                        (Gloss.SpecialKey Gloss.KeyRight) -> if x + (p_moveSpeed p) <= 240 then (x + (p_moveSpeed p),y) else (x,y)
+                        _ -> (x,y)
+            t0 = p_dt p
+            p' = if t0 > actionDelay then p { p_dt = 0 } else p { p_pos = (x',y'), p_dt = t0 + t}
+
+  actionDelay :: Float
+  actionDelay = 0.01::Float
 
   newPig :: Pig
   newPig = Pig {
-    p_pos = (0,0),
+    p_pos = (0,-200),
     p_size = (164,164),
     p_sprite = "pig",
-    p_moveSpeed = 164.0,
-    p_animationQueue = []
+    p_moveSpeed = 128.0,
+    p_animationQueue = [],
+    p_dt = 0
   }
